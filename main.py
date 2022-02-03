@@ -29,16 +29,16 @@ def save():
                            message=f'website :{website} \n email : {email} \n password :{password} \n telah benar dan siap untuk disimpan?? ')
         if is_ok :
             try:
-                with open(file='tkinter/password manager/password_data.json',mode='r') as data :
+                with open(file='password_data.json',mode='r') as data :
                     data_load = json.load(data)
                     data_load.update(data_json)    
-                with open(file='tkinter/password manager/password_data.json',mode='w') as data_file :
+                with open(file='password_data.json',mode='w') as data_file :
                     json.dump(data_load,data_file, indent=4)
                 entry_website.delete(0,END)
                 entry_email.delete(0,END)
                 entry_password.delete(0,END)
             except :
-                 with open(file='tkinter/password manager/password_data.json',mode='w') as data :
+                 with open(file='password_data.json',mode='w') as data :
                     json.dump(data_json,data)
                     entry_website.delete(0,END)
                     entry_email.delete(0,END)
@@ -48,7 +48,7 @@ def save():
 def find_password():
     website = entry_website.get()
     try:
-        with open("tkinter\password manager\password_data.json") as data_file:
+        with open("password_data.json") as data_file:
             data = json.load(data_file)
     except FileNotFoundError:
         messagebox.showinfo(title="Error", message="No Data File Found.")
@@ -75,7 +75,7 @@ windows.minsize(height=600, width=800)
 
 #image
 canvas=tkinter.Canvas(height= 200, width= 200,highlightthickness=0)
-photo = PhotoImage(file='tkinter/password manager/logo.png')
+photo = PhotoImage(file= 'logo.png')
 canvas.create_image(100,100,image=photo)
 
 #label
